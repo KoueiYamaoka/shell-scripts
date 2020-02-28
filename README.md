@@ -1,6 +1,6 @@
 # 個人用シェルスクリプト
 ## pdfcrops
-    ```Shell
+    ``` shell
 	$ pdfcrops *.pdf
 	```
 	- pdfcrop コマンドを入力ファイル全てに対して行う
@@ -8,7 +8,7 @@
 	- オリジナルのファイルは old/ 以下に保存される
 
 ## latex2txt
-    ```Shell
+    ``` shell
 	$ latex2txt filename.tex (or filename)
 	```
 	- tex ファイルを txt ファイルに変換する
