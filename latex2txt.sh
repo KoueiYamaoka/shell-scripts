@@ -1,22 +1,22 @@
 #!/bin/bash
 
 ## parameters
-# list of environments to be removed; contentx are not removed
+# list of environments to be removed; contents are not removed
 readonly ENV=(itemize enumerate description abstract document)
 
-# list of environments to be removed; contentx are also removed
+# list of environments to be removed; contents are removed
 readonly ENV_RM=(align figure table keywords)
 
 # list of commands to be removed; arguments are not removed
 readonly CMD=(ref eqref ac acl acp subsecref)
 
-# list of commands to be removed; arguments are also removed
+# list of commands to be removed; arguments are removed
 readonly CMD_RM=(par renewcommand label usepackage newcommand newtheorem def input maketitle acresetall clearpage newpage bibliographystyle bibliography)
 
 # list of commands for citation
 readonly CITE=(cite)
 
-# if true, remove text from documentclass to \begin{document} (true or false)
+# if true, remove text in the line from documentclass to \begin{document} (true or false)
 readonly IS_RM_PREAMBLE=true
 
 # if true, remove $ (true or false)
