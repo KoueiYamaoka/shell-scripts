@@ -2,7 +2,7 @@
 
 ## parameters
 # list of environments to be removed; contents are not removed
-readonly ENV=(itemize enumerate description abstract document)
+readonly ENV=(itemize enumerate description abstract)
 
 # list of environments to be removed; contents are removed
 readonly ENV_RM=(align figure table keywords)
@@ -41,7 +41,8 @@ cp ${fname}.tex ${fname}.txt
 
 # remove header
 if $IS_RM_PREAMBLE; then
-   sed -i -e '/\\documentclass/,/\\begin{document}/d' ${fname}.txt
+    sed -i -e '/\\documentclass/,/\\begin{document}/d' ${fname}.txt
+    sed -i -e '/\\end{document}/d' ${fname}.txt
 fi
 
 # remove environments while remaining arguments
