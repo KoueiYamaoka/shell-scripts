@@ -2,37 +2,37 @@
 
 ## parameters
 # list of environments to be removed; contents are not removed
-readonly ENV=(itemize enumerate description abstract)
+ENV=(itemize enumerate description abstract)
 
 # list of environments to be removed; contents are removed
-readonly ENV_RM=(align figure table keywords)
+ENV_RM=(align figure table keywords)
 
 # list of commands to be removed; arguments are not removed
-readonly CMD=(ref eqref ac acl acp subsecref)
+CMD=(ref eqref ac acl acp subsecref)
 
 # list of commands to be removed; arguments are removed
-readonly CMD_RM=(par renewcommand label usepackage newcommand newtheorem def input maketitle acresetall clearpage newpage bibliographystyle bibliography)
+CMD_RM=(par renewcommand label usepackage newcommand newtheorem def input maketitle acresetall clearpage newpage bibliographystyle bibliography)
 
 # list of commands for citation
-readonly CITE=(cite)
+CITE=(cite)
 
 # if true, remove text in the line from documentclass to \begin{document} (true or false)
-readonly IS_RM_PREAMBLE=true
+IS_RM_PREAMBLE=true
 
 # if true, remove $ (true or false)
-readonly RM_DOLLAR=true
+RM_DOLLAR=true
 
 # if true, remove $$ (true or false)
-readonly RM_DOLLAR_DOLLAR=true
+RM_DOLLAR_DOLLAR=true
 
 # if true, remove \n\n* (true or false)
-readonly RM_NEW_LINES=true
+RM_NEW_LINES=true
 
 # mark that is used instead of \item
-readonly MARK=*
+MARK=*
 
 # characters to be replaced to white space
-readonly CHAR=('~')
+CHAR=('~')
 
 
 ## main
