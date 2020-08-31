@@ -5,7 +5,7 @@
 ENV=(itemize enumerate description abstract)
 
 # list of environments to be removed; contents are removed
-ENV_RM=(align figure table keywords)
+ENV_RM=(align figure "figure*" table keywords)
 
 # list of commands to be removed; arguments are not removed
 CMD=(ref eqref ac acl acp subsecref)
