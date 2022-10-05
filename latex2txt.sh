@@ -7,8 +7,12 @@ ENV=(itemize enumerate description abstract)
 # list of environments to be removed; contents are removed
 ENV_RM=(align figure "figure*" table keywords)
 
+# list of reference commands to be removed
+REF_CMD=(ref eqref figref tblref secref)
+
 # list of commands to be removed; arguments are not removed
-CMD=(ref eqref ac acl acp subsecref)
+CMD=(ac acl)
+CMD_PLURAL=(acp)
 
 # list of commands to be removed; arguments are removed
 CMD_RM=(par renewcommand label usepackage newcommand newtheorem def input maketitle acresetall clearpage newpage bibliographystyle bibliography)
@@ -57,10 +61,20 @@ do
     sed -i -e '/\\begin{'"${i}"'}/,/\\end{'"${i}"'}/d' ${fname}.txt
 done
 
+# remove reference commands
+for i in ${REF_CMD[@]}
+do
+    sed -i -e 's/\\'"${i}"'{\([^}]*\)}/\\'"${i}"'/g' ${fname}.txt
+done
+
 # remove command while remaining arguments
 for i in ${CMD[@]}
 do
     sed -i -e 's/\\'"${i}"'{\([^}]*\)}/\1/g' ${fname}.txt
+done
+for i in ${CMD_PLURAL[@]}
+do
+    sed -i -e 's/\\'"${i}"'{\([^}]*\)}/\1s/g' ${fname}.txt
 done
 
 # remove command
