@@ -17,3 +17,8 @@
 ## pdf_reduce*
     - pdf のサイズ削減のために用意したスクリプト
 	- 削減されるとは限らない
+
+## toggle_emacs_frame_existence
+    - Emacs の GUI をトグルするためのコマンド
+    - local/ ディレクトリが必要
+    - ubuntu のショートカットに `/bin/zsh /home/kouei/shellScripts/toggle_emacs_frame_existence.sh` を設定すると良い
