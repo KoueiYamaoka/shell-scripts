@@ -5,17 +5,17 @@
 ENV=(itemize enumerate description abstract)
 
 # list of environments to be removed; contents are removed
-ENV_RM=(align figure "figure*" table keywords)
+ENV_RM=(align figure "figure*" table "table*" keywords)
 
 # list of reference commands to be removed
 REF_CMD=(ref eqref figref tblref secref)
 
 # list of commands to be removed; arguments are not removed
-CMD=(ac acl)
-CMD_PLURAL=(acp)
+CMD=(ac acl textbf textit textrm textsc textsf textsl texttt gls Gls)
+CMD_PLURAL=(acp glspl)
 
 # list of commands to be removed; arguments are removed
-CMD_RM=(par renewcommand label usepackage newcommand newtheorem def input maketitle acresetall clearpage newpage bibliographystyle bibliography)
+CMD_RM=(par renewcommand label usepackage newcommand newtheorem def input maketitle acresetall clearpage newpage bibliographystyle bibliography vspace hspace plabel)
 
 # list of commands for citation
 CITE=(cite)
@@ -40,12 +40,11 @@ CHAR=('~')
 
 
 ## main
-fname=`basename ${1} .tex`
-cp ${fname}.tex ${fname}.txt
+fname=`echo ${1} | sed 's/\.[^\.]*$//'`
 
 # remove header
 if $IS_RM_PREAMBLE; then
-    sed -i -e '/\\documentclass/,/\\begin{document}/d' ${fname}.txt
+    sed -e '/\\documentclass/,/\\begin{document}/d' ${fname}.tex > ${fname}.txt
     sed -i -e '/\\end{document}/d' ${fname}.txt
 fi
 
@@ -86,7 +85,8 @@ done
 # dealing with citation
 for i in ${CITE[@]}
 do
-    sed -i -e 's/\\'"${i}"'{\([^}]*\)}/[\1]/g' ${fname}.txt
+    # sed -i -e 's/\\'"${i}"'{\([^}]*\)}/[\1]/g' ${fname}.txt
+    sed -i -e 's/\\'"${i}"'{\([^}]*\)}//g' ${fname}.txt
 done
 
 # remove $$
@@ -98,12 +98,6 @@ fi
 if $RM_DOLLAR; then
     sed -i -e 's/\$//g' ${fname}.txt
 fi
-
-# dealing with citation
-for i in ${CITE[@]}
-do
-    sed -i -e 's/\\'"${i}"'{\([^}]*\)}/[\1]/g' ${fname}.txt
-done
 
 # remove characters
 for i in ${CHAR[@]}
